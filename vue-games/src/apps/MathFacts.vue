@@ -1,4 +1,16 @@
 <template>
+  <p>This is the Math Facts Game</p>
+  <div>
+    <div>
+      <label for="user-name">Username</label>
+      <input name="user-name" id="user-name" v-model="userName"/>
+    </div>
+    <div>
+      <label for="score">Score</label>
+      <input name="score" type="number" id="score" v-model="score"/>
+    </div>
+    <button @click="recordScore">Record Score</button>
+  </div>
   <div class="container" style="width: 500px">
     <!-- Start Screen -->
     <div v-if="screen=='start'" class="container">
@@ -117,6 +129,7 @@ export default {
   name: 'MathGame',
   data() {
     return {
+      userName: '',
       score: 0,
       screen: "start",
       maxNumber: 30,
@@ -159,8 +172,15 @@ export default {
       }
     },
     async recordScore() {
-      // TODO: when Math Facts finishes, make an Ajax call with axios (this.axios)
-      // to record the score on the backend
+      const data = {
+        "user-name" : this.userName,
+        "score": this.score,
+        "game": Math
+      };
+
+      const response = (await this.axios.post("/record-score/", data)).data;
+
+      console.log(response);
     }
   },
   computed: {
