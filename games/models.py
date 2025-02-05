@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class GameScore(models.Model):
 
-    MATH="MATH"
+    MATH= "MATH"
     ANAGRAM = "ANAGRAM"
 
     GAME_CHOICES = [

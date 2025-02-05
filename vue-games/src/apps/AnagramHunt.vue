@@ -141,7 +141,7 @@ export default {
       const data = {
         "user-name" : this.userName,
         "score": this.score,
-        "game": Math
+        "game": "MATH"
       };
 
       const response = (await this.axios.post("/record-score/", data)).data;
