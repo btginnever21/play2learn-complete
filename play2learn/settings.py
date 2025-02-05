@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     # local apps
+    "common.apps.CommonConfig",
     "games.apps.GamesConfig",
     'users.apps.UsersConfig',
 ]
