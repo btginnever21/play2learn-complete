@@ -16,6 +16,15 @@ class MathFactsView(TemplateView):
 class AnagramHuntView(TemplateView):
     template_name = "anagram-hunt.html"
 
+class GameScoresView(TemplateView):
+    template_name = 'game-scores.html'
+    #this is where i left off!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+def get_context_data(self, **kwargs):
+        context = super(GameScoresView, self).get_context_data(**kwargs)
+        context['anagram_scores'] = GameScore.objects.filter(game__exact='ANAGRAM').order_by('-score')
+        context['math_scores'] = GameScore.objects.filter(game__exact='MATH').order_by('-score')
+        return context
+
 def record_score(request):
     data = json.loads(request.body)
 
