@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
-
-from django.http import JsonResponse
 import json
+from django.http import JsonResponse
 from games.models import GameScore
 # Create your views here.
 
@@ -36,4 +35,8 @@ def record_score(request):
     new_score = GameScore(user_name=user_name, game=game, score=score)
     new_score.save()
 
-    return JsonResponse({"success": True})
+    response = {
+         "success": True
+    }
+
+    return JsonResponse(response)
