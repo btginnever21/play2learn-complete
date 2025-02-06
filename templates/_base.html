@@ -17,12 +17,9 @@
             <a href="{% url 'games:anagram-hunt' %}">Anagram Game</a> |
             <a href="{% url 'games:game-scores' %}">Game Scores</a> |
             {% if not user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_login' %}">Log in</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
-            </li>
+            <a class="nav-link" href="{% url 'account_login' %}">Log in</a> |
+            <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
+            
           {% else %}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
@@ -32,6 +29,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">My Account</a>
+                <a class="dropdown-item" href="#">My Django Jokes</a>
                 <div class="dropdown-divider"></div>
                 <form method="post" action="{% url 'account_logout' %}">
                   {% csrf_token %}
@@ -40,7 +38,6 @@
               </div>
             </li>
           {% endif %}
-  
         </nav>
     </header>
     {% block main %}{% endblock %}
