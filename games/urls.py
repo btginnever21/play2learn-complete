@@ -1,6 +1,9 @@
 from django.urls import path
+from django.contrib.auth import views as auth_views
+from games.views import HomeView, MathFactsView, AnagramHuntView, GameScoresView, ContactUsView, game_scores, record_score
 
-from games.views import HomeView, MathFactsView, AnagramHuntView, GameScoresView, ContactUsView, record_score
+
+
 
 app_name = 'games'
 urlpatterns = [
@@ -10,4 +13,6 @@ urlpatterns = [
     path('record-score/', record_score, name="record-score"),
     path('game-scores/', GameScoresView.as_view(), name='game-scores'),
     path('contact-us/', ContactUsView.as_view(), name='contact-us'),
+    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='account_login'),
+    
 ]

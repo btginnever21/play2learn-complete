@@ -3,16 +3,18 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 from django.utils.safestring import mark_safe
 from django.urls import reverse
+from common.admin import CustomUserAdmin
+
 
 from allauth.socialaccount.models import SocialApp, SocialAccount, SocialToken
 
-from common.admin import Play2LearnAdmin
+
 from common.utils.admin import append_fields, move_fields, remove_fields
 
 CustomUser = get_user_model()
 
-@admin.register(CustomUser)
-class CustomUserAdmin(Play2LearnAdmin, UserAdmin):
+
+class CustomUserAdmin( UserAdmin):
     model = CustomUser
 
     # List Attributes

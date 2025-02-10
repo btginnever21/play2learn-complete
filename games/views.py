@@ -19,6 +19,9 @@ class ContactUsView(TemplateView):
 class AnagramHuntView(TemplateView):
     template_name = "anagram-hunt.html"
 
+class MyAccountView(TemplateView):
+    template_name = "my_account.html"
+
 class GameScoresView(TemplateView):
     template_name = 'game-scores.html'
     #this is where i left off!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -43,3 +46,10 @@ def record_score(request):
     }
 
     return JsonResponse(response)
+
+def game_scores(request):
+    # Fetch top 3 scores for Math and Anagram games
+    math_scores = GameScore.objects.filter(game_type='MATH').order_by('-score')[:3]
+    anagram_scores = GameScore.objects.filter(game_type='ANAGRAM').order_by('-score')[:3]
+
+    return render(request, 'game-scores.html', {'math_scores': math_scores, 'anagram_scores': anagram_scores})

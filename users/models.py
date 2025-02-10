@@ -15,3 +15,5 @@ class CustomUser(AbstractUser):
     help_text='Image must be 200px by 200px.',
     validators=[validate_avatar]
     )
+
+

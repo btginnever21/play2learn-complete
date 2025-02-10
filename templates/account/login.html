@@ -12,6 +12,11 @@
       {{ form|crispy }}
       <button class="form-control btn btn-primary">LOG IN</button>
     </form>
+  {% if user.is_authenticated %}
+  <script>
+    window.location.href = "{% url 'my_account' %}";
+  </script>
+  {% endif %}
   </div>
   <div class="card-footer">
     <p>
