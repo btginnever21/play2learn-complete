@@ -43,6 +43,16 @@
           {% endif %}
         </nav>
     </header>
+    {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <div class="alert message{{ message.tags }} alert-dismissible" role="alert">
+          <strong>{{message}}</strong>
+          <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    </ul>
+    {% endif %}
     {% block main %}{% endblock %}
     {% endblock %}
       <footer class="fixed-bottom bg-light row">
